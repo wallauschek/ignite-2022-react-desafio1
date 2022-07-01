@@ -6,7 +6,7 @@ import { Header } from './components/Header'
 import { Task } from './components/Task'
 
 import './global.css'
-import imgNoTasks from './assets/no-tasks.png'
+import imgNoTasks from './assets/no-tasks.svg'
 
 interface TodoListProps {
   id: string;
@@ -36,7 +36,6 @@ function App() {
   const [newTaskText, setNewTaskText] = useState('')
 
   function handleChange (id: string) {
-    console.log(id)
     setTodoList(todoList.map(todo => {
       if (todo.id === id) {
         return {

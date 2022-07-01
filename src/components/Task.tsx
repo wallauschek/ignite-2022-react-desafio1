@@ -2,7 +2,7 @@ import { Trash } from 'phosphor-react'
 import styles from './Task.module.css'
 
 interface TodoListProps {
-  id: number;
+  id: string;
   task: string;
   completed: boolean;
   createdAt: Date;
@@ -11,16 +11,13 @@ interface TodoListProps {
 
 interface TaskProps {
   todo: TodoListProps;
-  handleChangeProps: (id: number) => void;
-  deleteTaskProps: (id: string) => void;
+  handleChangeProps: (id: string) => void;
+  onDeleteComment: (todo: TodoListProps) => void;
 }
 
 
 export function Task({todo, handleChangeProps, onDeleteComment} : TaskProps) {
-  // function handleChangeProps (id: number) {
-  //   console.log(id);
-  // }
-  function deleteTodoProps() {
+  function deleteTodoProps(todo: TodoListProps) {
     onDeleteComment(todo);
   }
   return (
@@ -38,7 +35,7 @@ export function Task({todo, handleChangeProps, onDeleteComment} : TaskProps) {
       <span  className={todo.completed ? styles.tarefaConcluida : ''}>
         {todo.task}
       </span>
-      <button type="button" onClick={() => deleteTodoProps(todo.id)}>
+      <button type="button" onClick={() => deleteTodoProps(todo)}>
         <Trash />
       </button>
       </div>
